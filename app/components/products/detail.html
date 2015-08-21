@@ -1,0 +1,163 @@
+<div class="container">
+
+    <!-- inner items -->
+    <div class="inner-conten">
+        <!-- products item -->
+        <div class="item-single">
+            <!-- heading -->
+            <h2 class="br-orange default-head">You are viewing item: Folsom-Sofa Set</h2>
+            <!-- single product details -->
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <!-- product item image -->
+                    <img class="img-responsive img-thumbnail" src="{{product.Pictures}}" alt=""/>
+                    <br><br>
+                    <!-- mini images -->
+                    <a href="assets/#"><img class="img-responsive img-thumbnail mini-img"
+                                            src="assets/img/item/9.png" alt=""/></a>
+                    <a href="assets/#"><img class="img-responsive img-thumbnail mini-img"
+                                            src="assets/img/item/8.png" alt=""/></a>
+                    <a href="assets/#"><img class="img-responsive img-thumbnail mini-img"
+                                            src="assets/img/item/2.png" alt=""/></a>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <!-- product items details -->
+                    <div class="item-details">
+                        <!-- heading -->
+                        <h3>Folsom-Sofa Set</h3>
+                        <!-- table -->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Brand:</th>
+                                    <td>Luxury Designers</td>
+                                </tr>
+                                <tr>
+                                    <th>Price:</th>
+                                    <td><strong class="theme">${{product.Price}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <th>Modal:</th>
+                                    <td>SF-031 - Luxury</td>
+                                </tr>
+                                <tr>
+                                    <th>Color:</th>
+                                    <td><span class="badge br-black">&nbsp;</span> <span class="badge br-blue">&nbsp;</span>
+                                        <span class="badge br-red">&nbsp;</span> <span class="badge br-brown">&nbsp;</span>
+                                        <span class="badge br-green">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <th>Availability:</th>
+                                    <td><span class="label label-success">In Stock</span></td>
+                                </tr>
+                                <tr>
+                                    <th>Reward Points:</th>
+                                    <td>500 bonus point</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td><a href="assets/#" class="btn btn-danger"><i
+                                            class="fa fa-shopping-cart"></i>&nbsp; Add to cart</a>&nbsp;
+                                        <a class="btn btn-default" href="assets/#"><i class="fa fa-heart"></i>&nbsp;
+                                            Add to wish list</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- tabs -->
+                        <div role="tabpanel">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="assets/#tab1"
+                                                                          aria-controls="tab1" role="tab"
+                                                                          data-toggle="tab">Description</a></li>
+                                <li role="presentation"><a href="assets/#tab2" aria-controls="tab2" role="tab"
+                                                           data-toggle="tab">Delivery</a></li>
+                                <li role="presentation"><a href="assets/#tab3" aria-controls="tab3" role="tab"
+                                                           data-toggle="tab">Payments &amp; Returns</a></li>
+                                <li role="presentation"><a href="assets/#tab4" aria-controls="tab4" role="tab"
+                                                           data-toggle="tab">Reviews</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                                    <!-- paragraph -->
+                                    <p>{{product.FullDescription}}</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab2">
+                                    <!-- paragraph -->
+                                    <p>{{product.FullDescription}}</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab3">
+                                    <!-- paragraph -->
+                                    <p>{{product.FullDescription}}</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab4">
+                                    <div class="well">
+                                        <!-- heading -->
+                                        <h5>Himanshu Gupta
+                                            <small>(7/9)</small>
+                                        </h5>
+                                        <!-- date -->
+                                        <em>24-APR-2015</em>
+                                        <!-- paragraph -->
+                                        <p>{{product.FullDescription}}</p>
+                                    </div>
+                                    <h6>Write a Review</h6>
+                                    <!-- Review form (not working)-->
+                                    <form class="form-horizontal">
+                                        <!-- Name -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" for="name2">Your Name</label>
+
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="name2">
+                                            </div>
+                                        </div>
+                                        <!-- Select box -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Rating</label>
+
+                                            <div class="col-md-6">
+                                                <select class="form-control">
+                                                    <option>&nbsp;</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Review -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" for="review">Your
+                                                Review</label>
+
+                                            <div class="col-md-6">
+                                                <textarea class="form-control" id="review"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- Buttons -->
+                                        <div class="form-group">
+                                            <!-- Buttons -->
+                                            <div class="col-md-6 col-md-offset-2">
+                                                <button type="submit" class="btn btn-default">Post</button>
+                                                <button type="reset" class="btn btn-default">Reset</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product item end -->
+    </div>
+
+
+</div>

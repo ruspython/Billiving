@@ -1,15 +1,426 @@
-<!doctype html>
-<html ng-app>
+<!DOCTYPE html>
+<html ng-app="products">
 <head>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>-->
-    <script src="assets/js/angular.js"></script>
-    <script src="app/app.module.js"></script>
-    <script src="app/app.routes.js"></script>
-</head>
-<body>
-    <div ng-view>
+    <meta charset="utf-8">
+    <title>Belliving.com</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="Himanshu_Gupta">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- flex slider -->
+    <link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen"/>
+    <!-- Font awesome CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-less.css" rel="stylesheet">
+
+</head>
+
+<body ng-controller="ProductsController">
+<!-- main wrapper -->
+<div class="wrapper">
+
+    <!-- header -->
+    <header>
+        <!-- navigation menu with logo -->
+        <nav class="navbar">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img class="img-responsive" src="assets/img/logo/logo.png" alt=""></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Category <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="category in categories"><a href="items.html"><i class="fa fa-arrow-right"></i> {{category.Name}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <!-- header end -->
+
+    <!-- main content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- recent sale item block -->
+            <div class="recent-sale">
+                <!-- heading -->
+                <h2 class="br-orange default-head">Recent Products</h2>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-brown">New</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/9.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Folsom-Sofa Set</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-red">SALE</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/4.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Pocket Wallet</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple pocket...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$21.89</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-yellow">30%</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/5.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Lady Purse</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple pocket...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$21.89</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-pink">New</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/6.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Running Shoes</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$21.89</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-blue">Cool</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/1.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Diamond Ring</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-lblue">Hot</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/7.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Running Shoes</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$21.89</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-green">50%</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/2.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Study Chair</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-red">Sale</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/8.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Folsom-Sofa Set</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-lblue">Hot</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/7.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Running Shoes</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$21.89</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-green">50%</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/2.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Study Chair</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <!-- recent item for slider -->
+                        <div class="sale-item">
+                            <!-- hot tag -->
+                            <span class="hot br-red">Sale</span>
+                            <!-- like, share, etc media tags for item -->
+                            <a href="#" class="media-1" data-toggle="tooltip" data-placement="left" title="41 Likes"><i
+                                    class="fa fa-thumbs-up"></i></a>
+                            <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
+                               title="195 Purchase"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
+                               title="795 Shares"><i class="fa fa-share-alt"></i></a>
+                            <!-- item image -->
+                            <img class="img-responsive" src="assets/img/item/8.png" alt=""/>
+                            <!-- item name / title -->
+                            <h3>Folsom-Sofa Set</h3>
+                            <!-- item details -->
+                            <span class="details">New design, Good leather and Now in multiple color...</span>
+                            <!-- button -->
+                            <div class="cart-btn">
+                                <!-- cart button -->
+                                <button class="btn btn-default" type="button"><span class="price">$199.95</span> Add to
+                                    cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- recent sale end -->
+        </div>
     </div>
+    <!-- main content end -->
+
+</div>
+
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-arrow-up"></i></a></span>
+
+<!-- Javascript files -->
+
+
+<!-- jQuery -->
+<script src="assets/js/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- FlexSlider -->
+<script defer src="assets/js/jquery.flexslider-min.js"></script>
+<!-- SmoothScroll JS -->
+<script src="assets/js/SmoothScroll.js"></script>
+<!-- Respond JS for IE8 -->
+<script src="assets/js/respond.min.js"></script>
+<!-- HTML5 Support for IE -->
+<script src="assets/js/html5shiv.js"></script>
+<!-- Custom JS -->
+<script src="assets/js/custom.js"></script>
+<!-- Angular-->
+<script src="assets/js/angular.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<!-- Product module files -->
+<script src="app/products.js"></script>
+<script src="app/routes.js"></script>
+<script src="app/components/products/controllers/list.controller.js"></script>
+<script src="app/components/products/directives/products.directives.js"></script>
+<script src="app/components/products/services/products.service.js"></script>
+<script>
+
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "fade",
+            controlNav: false,
+            directionNav: false,
+            pauseOnHover: true,
+            slideshowSpeed: 7000,
+            animationSpeed: 1000
+        });
+    });
+
+</script>
 </body>
 </html>
-
