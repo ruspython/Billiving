@@ -13,6 +13,7 @@
     <!-- Styles -->
     <!-- Bootstrap CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Font awesome CSS -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -23,8 +24,7 @@
     <link rel="shortcut icon" href="#">
 </head>
 
-<body>
-
+<body ng-controller="MainController">
 <!-- main wrapper -->
 <div class="wrapper">
 
@@ -32,7 +32,6 @@
         <!-- navigation menu with logo -->
         <nav class="navbar">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
@@ -44,37 +43,22 @@
                     <a class="navbar-brand" href="#/"><img class="img-responsive" src="assets/img/logo/logo.png" alt=""></a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">Home</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">Category <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li ng-repeat="category in categories"><a href="items.html"><i
-                                        class="fa fa-arrow-right"></i> {{category.Name}}</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
-                <!-- /.navbar-collapse -->
             </div>
-            <!-- /.container-fluid -->
         </nav>
     </header>
     <!-- header end -->
 
-    <!-- main content -->
-    <div class="main-content" ng-view>
+    <div class="main-content" ng-view></div>
 
-    </div>
-    <!-- main content end -->
-
-    {{products[0]}}
 </div>
 
 <!-- Scroll to top -->
@@ -98,10 +82,13 @@
 <!-- Angular-->
 <script src="assets/js/angular.js"></script>
 <script src="assets/js/angular-route.js"></script>
+<script src="assets/js/angular-animate.js"></script>
 <script src="assets/js/ng-infinite-scroll.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-0.13.3.js"></script>
 <!-- Product module files -->
 <script src="app/products.js"></script>
 <script src="app/routes.js"></script>
+<script src="app/components/products/controllers/main.controller.js"></script>
 <script src="app/components/products/controllers/list.controller.js"></script>
 <script src="app/components/products/controllers/detail.controller.js"></script>
 <script src="app/components/products/directives/products.directives.js"></script>

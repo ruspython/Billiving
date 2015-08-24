@@ -10,6 +10,7 @@
     function Products($http) {
         var Products = {
                 all: all,
+                filter: filter,
                 get: get,
                 categories: categories
             },
@@ -23,18 +24,35 @@
 
         return Products;
 
-        function all() {
-            //return $http.get(API_ENDPOINT+'subdomain/products?CategoryId=1', config);
-            return $http.get('products.json', config);
+        function all(filterParams) {
+            var filterConfig = {};
+            merge_obj(config, filterConfig);
+            filterConfig.params = filterParams;
+            return $http.get(API_ENDPOINT+'subdomain/products', filterConfig);
+            //return $http.get('products.json', config);
+        }
+
+        function filter(filterParams) {
+            var filterConfig = {};
+            merge_obj(config, filterConfig);
+            filterConfig.params = filterParams;
+            console.log(filterParams);
+            return $http.get(API_ENDPOINT+'subdomain/products', filterConfig);
         }
 
         function get(id) {
-            //return $http.get(API_ENDPOINT+'subdomain/products/'+id, config);
-            return $http.get('product.json', config);
+            return $http.get(API_ENDPOINT+'subdomain/products/'+id, config);
+            //return $http.get('product.json', config);
         }
 
         function categories() {
             return $http.get(API_ENDPOINT+'subdomain/categories', config);
+        }
+
+        function merge_obj(obj1, obj2) {
+            for (var key in obj1) {
+                obj2[key] = obj1[key];
+            }
         }
     }
 })();

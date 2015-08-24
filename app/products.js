@@ -10,7 +10,7 @@
         ]);
 
     angular
-        .module('products.controllers', ['infinite-scroll']);
+        .module('products.controllers', ['infinite-scroll', 'ngAnimate', 'ui.bootstrap']);
 
     angular
         .module('products.directives', []);

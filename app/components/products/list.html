@@ -1,97 +1,39 @@
-<div class="container">
-    <!-- inner items -->
+
+<div class="container"  infinite-scroll="loadMore()">
     <div class="inner-content items">
         <div class="row">
             <div class="col-md-3 col-sm-4">
-                <!-- inner navigation menu -->
                 <div class="navi">
-                    <!-- heading -->
-                    <h3>My Menu</h3>
-                    <!-- list -->
+                    <h3>Categoris</h3>
                     <ul class="list-unstyled">
-                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="has_sub"><a href="#"><i class="fa fa-tablet"></i> SmartPhones</a>
-                            <ul class="list-unstyled">
-                                <li><label><input type="checkbox" checked>Apple</label></li>
-                                <li><label><input type="checkbox" checked>Samsung</label></li>
-                                <li><label><input type="checkbox">Motorola</label></li>
-                                <li><label><input type="checkbox" checked>Nokia</label></li>
-                            </ul>
-                        </li>
-                        <li class="has_sub"><a href="#"><i class="fa fa-laptop"></i> Laptops</a>
-                            <ul class="list-unstyled">
-                                <li><label><input type="checkbox">Apple</label></li>
-                                <li><label><input type="checkbox">Samsung</label></li>
-                                <li><label><input type="checkbox">Motorola</label></li>
-                                <li><label><input type="checkbox">Nokia</label></li>
-                            </ul>
-                        </li>
-                        <li class="has_sub"><a href="#"><i class="fa fa-cutlery"></i> Kitchen Store</a>
-                            <ul class="list-unstyled">
-                                <li><label><input type="checkbox">Apple</label></li>
-                                <li><label><input type="checkbox">Samsung</label></li>
-                                <li><label><input type="checkbox">Motorola</label></li>
-                                <li><label><input type="checkbox">Nokia</label></li>
-                            </ul>
-                        </li>
-                        <li class="has_sub"><a href="#"><i class="fa fa-briefcase"></i> Office Store</a>
-                            <ul class="list-unstyled">
-                                <li><label><input type="checkbox">Apple</label></li>
-                                <li><label><input type="checkbox">Samsung</label></li>
-                                <li><label><input type="checkbox">Motorola</label></li>
-                                <li><label><input type="checkbox">Nokia</label></li>
-                            </ul>
-                        </li>
-                        <li class="has_sub"><a href="#"><i class="fa fa-camera"></i> Camera</a>
-                            <ul class="list-unstyled">
-                                <li><label><input type="checkbox">Apple</label></li>
-                                <li><label><input type="checkbox">Samsung</label></li>
-                                <li><label><input type="checkbox">Motorola</label></li>
-                                <li><label><input type="checkbox">Nokia</label></li>
-                            </ul>
-                        </li>
+                        <li ng-repeat="cat in categories" ><a ng-click="filterByCategory(cat.Id)">{{cat.Name}}</a></li>
                     </ul>
                 </div>
-
             </div>
             <div class="col-md-9 col-sm-8">
-                <!-- products items -->
                 <div class="recent-sale">
-                    <!-- heading -->
-                    <h2 class="br-orange default-head">Accessories</h2>
-
-                    <div class="row" >
+                    <h2 class="br-orange default-head">Products
+                        <form id="searchForm" ng-submit="filter()" >
+                            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchQuery">
+                        </form>
+                    </h2>
+                    <div class="row">
                         <div class="col-md-4 col-sm-6" ng-repeat="product in products">
-                            <!-- recent item for slider -->
                             <div class="sale-item">
-                                <!-- hot tag -->
-                                <span class="hot br-brown">New</span>
-                                <!-- like, share, etc media tags for item -->
-                                <a href="#" class="media-1" data-toggle="tooltip" data-placement="left"
-                                   title="41 Likes"><i class="fa fa-thumbs-up"></i></a>
-                                <a href="#" class="media-2" data-toggle="tooltip" data-placement="left"
-                                   title="195 Purchase"><i class="fa fa-heart"></i></a>
-                                <a href="#" class="media-3" data-toggle="tooltip" data-placement="left"
-                                   title="795 Shares"><i class="fa fa-share-alt"></i></a>
-                                <!-- item image -->
-                                <img class="img-responsive" src="{{product.Pictures}}" alt=""/>
-                                <!-- item name / title -->
-                                <h3><a href="#/product/1">{{product.ItemId}}</a></h3>
-                                <!-- item details -->
-                                <span class="details">New design, Good leather and Now in multiple color...</span>
-                                <!-- button -->
+                                <img class="img-responsive" src="{{product.Thumbnail}}" alt=""/>
+                                <h3><a href="#/product/{{product.Id}}">{{product.ItemId}}</a></h3>
+                                <span class="details">{{product.ShortDescription}}</span>
                                 <div class="cart-btn">
-                                    <!-- cart button -->
-                                    <button class="btn btn-default" type="button"><span
-                                            class="price">${{product.Price}}</span> Add to cart
-                                    </button>
+                                    <a href="#/product/{{product.Id}}" class="btn btn-default" type="button"><span
+                                            class="price">${{product.Price}}</span> more info
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- recent sale end -->
             </div>
         </div>
     </div>
 </div>
+{{products.length}}

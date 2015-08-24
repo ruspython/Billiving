@@ -20,12 +20,10 @@
 
         function getSuccessFn(data, status, headers, config) {
             $scope.product = data.data;
-            console.log('get data');
-            console.log(data.data);
         }
 
         function getErrorFn(data, status, headers, config) {
-            alert('error all loading');
+            alert('error loading');
         }
 
     }
