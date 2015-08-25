@@ -33,6 +33,7 @@
         }
 
         if (!$scope.products.length) {
+            $scope.$emit('list:filtered');
             Products.categories().then(categoriesSuccessFn, categoriesErrorFn);
             Products.all({skip: 0, top: top}).then(productsSuccessFn, productsErrorFn);
             $rootScope.firstLoad = false;
@@ -49,6 +50,7 @@
         };
 
         $scope.filter = function () {
+            $scope.$emit('list:filtered');
             $rootScope.loading = true;
             resetInc();
             currentSearchQuery = $scope.searchQuery;
@@ -58,6 +60,7 @@
         };
 
         $scope.filterByCategory = function (id) {
+            $scope.$emit('list:filtered');
             $rootScope.loading = true;
             resetInc();
             currentCategory = id;
