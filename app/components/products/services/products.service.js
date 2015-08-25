@@ -8,17 +8,19 @@
     Products.$inject = ['$http'];
 
     function Products($http) {
+        var subdomain = window.location.host.split('.')[0];
         var Products = {
                 all: all,
                 filter: filter,
                 get: get,
                 categories: categories,
-                settings: settings
+                settings: settings,
+                paypalEmail: paypalEmail
             },
             API_ENDPOINT = 'http://billiving-qa.azurewebsites.net/api2/v1/',
             config = {
                 headers: {
-                    'X-Subdomain': 'subdomain'
+                    'X-Subdomain': subdomain
                 }
             }
             ;
@@ -54,6 +56,9 @@
             return $http.get(API_ENDPOINT+'subdomain/settings', config);
         }
 
+        function paypalEmail() {
+            return $http.get(API_ENDPOINT+'subdomain/gateway/paypal', config);
+        }
         //
 
         function merge_obj(obj1, obj2) {

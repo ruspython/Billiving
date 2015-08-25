@@ -5,10 +5,11 @@
         .module('products.controllers')
         .controller('DetailController', DetailController);
 
-    DetailController.$inject = ['$scope', '$routeParams', 'Products'];
+    DetailController.$inject = ['$scope', '$routeParams', 'Products', '$rootScope'];
 
-    function DetailController($scope, $routeParams, Products) {
+    function DetailController($scope, $routeParams, Products, $rootScope) {
         $scope.product = [];
+        $rootScope.loading = true;
 
         activate();
 
@@ -18,6 +19,7 @@
 
         function getSuccessFn(data, status, headers, config) {
             $scope.product = data.data;
+            $rootScope.loading = false;
         }
 
         function getErrorFn(data, status, headers, config) {

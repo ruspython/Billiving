@@ -15,14 +15,14 @@
                         <form id="searchForm" ng-submit="filter()" >
                             <input type="text" class="form-control" placeholder="Search for..." ng-model="searchQuery"/>
                         </form>
-                        <span ng-if="resulstsQty >= 0">Found {{resulstsQty}} results</span>
+                        <span ng-if="products.length >= 0">Found {{products.length}} results</span>
                     </h2>
                     <div class="row">
                         <div class="col-md-4 col-sm-6" ng-repeat="product in products">
                             <div class="sale-item">
                                 <img class="img-responsive" src="{{product.Thumbnail}}" alt=""/>
-                                <h3><a href="#/product/{{product.Id}}">{{product.ItemId}}</a></h3>
-                                <span class="details">{{product.ShortDescription}}</span>
+                                <h3><a href="#/product/{{product.Id}}" ng-click="saveScrollTop()">{{product.ItemId}}</a></h3>
+                                <span class="details">{{product.ShortDescription | cut:true:100:' ...'}}</span>
                                 <div class="cart-btn">
                                     <a href="#/product/{{product.Id}}" class="btn btn-default" type="button"><span
                                             class="price">{{product.Price | currency:CURRENCY_SYMBOL}}</span> more info

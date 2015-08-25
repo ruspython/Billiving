@@ -13,16 +13,22 @@
         $scope.LOGO_DIR = '';
         $scope.CURRENCY_SYMBOL = '';
         $rootScope.firstLoad = true;
+        $rootScope.loading = true;
 
         Products.settings().then(settingsSuccessFn, settingsFailFn);
+        Products.paypalEmail().then(paypalSuccessFn, settingsFailFn);
 
         function settingsSuccessFn (data, status, headers, config) {
             $scope.LOGO_DIR = data.data.Logo;
             $scope.CURRENCY_SYMBOL = data.data.CurrencySymbol;
         }
 
+        function paypalSuccessFn (data, status, headers, config) {
+            $scope.PAYPAL_ENABLED = (data.data.length > 0);
+        }
+
         function settingsFailFn (data, status, headers, config) {
-            console.error("Can not load logo");
+            console.error("Can not load settings");
         }
     }
 

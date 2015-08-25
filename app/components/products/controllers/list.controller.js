@@ -5,9 +5,9 @@
         .module('products.controllers')
         .controller('ListController', ListController);
 
-    ListController.$inject = ['$scope', 'Products', '$rootScope'];
+    ListController.$inject = ['$scope', 'Products', '$rootScope', '$timeout'];
 
-    function ListController($scope, Products, $rootScope) {
+    function ListController($scope, Products, $rootScope, $timeout) {
         var top,
             busyLoading = false,
             skip,
@@ -20,13 +20,16 @@
         $scope.products = [];
         $scope.categories = [];
         $scope.searchQuery = '';
-        $scope.resulstsQty = -1;
 
         resetInc();
         $scope.$watch(function () { return $(window).width(); }, resetInc);
 
         if (!$rootScope.firstLoad) {
             restoreCache();
+            $timeout(function() {
+                $('html').scrollTop(window.localStorage.getItem('scrollTop'));
+            });
+
         }
 
         if (!$scope.products.length) {
@@ -46,24 +49,26 @@
         };
 
         $scope.filter = function () {
+            $rootScope.loading = true;
             resetInc();
             currentSearchQuery = $scope.searchQuery;
             Products.all({freetext: $scope.searchQuery, top: top, skip: skip, categoryid: currentCategory}).then(filterSuccessFn, productsErrorFn).then(function () {
             //
             });
-            Products.all({freetext: $scope.searchQuery, count:1, categoryid: currentCategory}).then(function (data) {
-                // getting search results count
-                $scope.resulstsQty = parseInt(data.data);
-            }, productsErrorFn)
         };
 
         $scope.filterByCategory = function (id) {
+            $rootScope.loading = true;
             resetInc();
             currentCategory = id;
             currentSearchQuery = $scope.searchQuery = "";
             Products.all({freetext: currentSearchQuery, top: top, skip: skip, categoryid: currentCategory}).then(filterSuccessFn, productsErrorFn).then(function () {
                 //console.log('finished');
             });
+        };
+
+        $scope.saveScrollTop = function () {
+            window.localStorage.setItem('scrollTop', $('html').scrollTop());
         };
 
         function categoriesSuccessFn(data, status, headers, config) {
@@ -79,11 +84,13 @@
                 $scope.products.push(data.data[i]);
             }
             cacheState();
+            $rootScope.loading = false;
         }
 
         function filterSuccessFn(data, status, headers, config) {
             $scope.products = data.data;
             cacheState();
+            $rootScope.loading = false;
         }
 
         function productsErrorFn(data, status, headers, config) {
