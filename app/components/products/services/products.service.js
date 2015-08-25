@@ -12,7 +12,8 @@
                 all: all,
                 filter: filter,
                 get: get,
-                categories: categories
+                categories: categories,
+                settings: settings
             },
             API_ENDPOINT = 'http://billiving-qa.azurewebsites.net/api2/v1/',
             config = {
@@ -48,6 +49,12 @@
         function categories() {
             return $http.get(API_ENDPOINT+'subdomain/categories', config);
         }
+
+        function settings() {
+            return $http.get(API_ENDPOINT+'subdomain/settings', config);
+        }
+
+        //
 
         function merge_obj(obj1, obj2) {
             for (var key in obj1) {

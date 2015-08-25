@@ -13,8 +13,6 @@
         activate();
 
         function activate() {
-            //$scope.$watchCollection(function () { return $scope.products; }, render);
-            //$scope.$watch(function () { return $(window).width(); }, render);
             Products.get($routeParams.id).then(getSuccessFn, getErrorFn);
         }
 
@@ -23,7 +21,7 @@
         }
 
         function getErrorFn(data, status, headers, config) {
-            alert('error loading');
+            console.error('error loading detail');
         }
 
     }

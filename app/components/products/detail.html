@@ -4,15 +4,16 @@
         <!-- products item -->
         <div class="item-single">
             <!-- heading -->
-            <h2 class="br-orange default-head">You are viewing item: {{product.ItemId}}</h2>
+            <h2 class="br-orange default-head">You are viewing item: {{product.ShortDescription | cut:true:100:' ...'}}</h2>
             <!-- single product details -->
+            <a href="#/" class="btn btn-green"> <- Back </a>
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div>
                         <div style="height: 305px">
                             <carousel interval="myInterval" no-wrap="noWrapSlides">
                                 <slide ng-repeat="pic in product.Pictures" active="slide.active">
-                                    <img ng-src="{{IMAGE_DIR}}{{pic.Picture}}" style="margin:auto;">
+                                    <img ng-src="{{IMAGE_DIR}}{{pic.Picture}}" style="margin:auto;"/>
                                 </slide>
                             </carousel>
                         </div>
@@ -22,13 +23,13 @@
                     <!-- product items details -->
                     <div class="item-details">
                         <!-- heading -->
-                        <h3>{{product.ItemId}}</h3>
+                        <h3>{{product.ShortDescription | cut:true:100:' ...'}}</h3>
                         <!-- table -->
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
                                     <th>Price:</th>
-                                    <td><strong class="theme">${{product.Price}}</strong></td>
+                                    <td><strong class="theme">{{product.Price | currency:CURRENCY_SYMBOL}}</strong></td>
                                 </tr>
                             </table>
                         </div>

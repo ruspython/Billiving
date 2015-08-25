@@ -1402,3 +1402,21 @@ footer .copy{
 		font-size: 10px;
 	}
 }
+
+/* Custom styles */
+
+.carousel-control:focus, .carousel-control:hover {
+	cursor: pointer;
+}
+
+.carousel-control.left, .carousel-control.right {
+	background-image: none;
+	cursor: pointer;
+}
+
+.sale-item .cart-btn .btn .price {
+	width: 100px;
+}
+.sale-item .cart-btn .btn {
+	padding: 0px 15px 0px 105px;
+}
