@@ -21,8 +21,15 @@
         $scope.categories = [];
         $scope.searchQuery = '';
 
-        resetInc();
-        $scope.$watch(function () { return $(window).width(); }, resetInc);
+        $scope.$watch(function () { return $(window).width(); }, function () {
+            if ($(window).width()>=992) {
+                inc = 6;
+            } else if ($(window).width()>768) {
+                inc = 4;
+            } else {
+                inc = 2;
+            }
+        });
 
         if (!$rootScope.firstLoad) {
             restoreCache();
@@ -33,6 +40,7 @@
         }
 
         if (!$scope.products.length) {
+            resetInc();
             $scope.$emit('list:filtered');
             Products.categories().then(categoriesSuccessFn, categoriesErrorFn);
             Products.all({skip: 0, top: top}).then(productsSuccessFn, productsErrorFn);
@@ -101,10 +109,10 @@
         }
 
         function resetInc(){
-            if ($(window).width()>=1200) {
+            if ($(window).width()>=992) {
                 top = 6;
                 inc = 6;
-            } else if ($(window).width()>992) {
+            } else if ($(window).width()>768) {
                 top = 4;
                 inc = 4;
             } else {
