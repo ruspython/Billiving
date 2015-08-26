@@ -20,6 +20,7 @@
         $scope.products = [];
         $scope.categories = [];
         $scope.searchQuery = '';
+        $scope.searchCount = -1;
 
         $scope.$watch(function () { return $(window).width(); }, function () {
             if ($(window).width()>=992) {
@@ -62,12 +63,17 @@
             $rootScope.loading = true;
             resetInc();
             currentSearchQuery = $scope.searchQuery;
-            Products.all({freetext: $scope.searchQuery, top: top, skip: skip, categoryid: currentCategory}).then(filterSuccessFn, productsErrorFn).then(function () {
-            //
-            });
+            Products.all({freetext: $scope.searchQuery, count: 1}).then(function (data) {
+                Products.all({freetext: $scope.searchQuery, top: top, skip: skip}).then(filterSuccessFn, productsErrorFn).then(function () {
+                    //
+                });
+                $scope.searchCount = parseInt(data.data);
+            }, productsErrorFn);
+
         };
 
         $scope.filterByCategory = function (id) {
+            $scope.searchCount = -1;
             $scope.$emit('list:filtered');
             $rootScope.loading = true;
             resetInc();
